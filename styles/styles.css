@@ -2,6 +2,9 @@ body {
     margin: 0;
 }
 
+
+
+
 .whiteSpace {
     width: auto;
     height: 10vh;
@@ -33,11 +36,25 @@ body {
 .game-page {
     background-color: #727e76;
     height: 500px;
-    width: 1400px;
+    width: 1200px;
     margin: 0 auto;
     border-radius: 10px;
     display: block;
     padding: unset;
+    
+
+}
+
+.game-page .farm {
+    position: absolute;
+    left: -200px;
+    top: 50px;
+    height: 120px;
+    width: 200px;
+    background-image: url('/images/farm.png');
+    background-position: center;
+    
+    background-size: cover;
 }
 
 /*
@@ -83,5 +100,9 @@ body {
     position: absolute;
     width: 22px;
     height: 30px;
-    background-image: url('/images/farmer.png')
+    background-image: url('/images/farmer.png');
+    background-position: center;
+    background-size: cover;
+    top: 22px;
+    left: 22px;
 }
