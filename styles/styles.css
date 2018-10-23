@@ -13,25 +13,19 @@ body {
     text-align: center;
 }
 
-.grid {
-    border: 1px solid #ddd;
-    display: inline-block;
-    padding: 1px;
-    
-}
+
 .row {
     margin: 0;
 }
 .cell {
     border: 1px solid #ddd;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     display: inline-block;
-    margin: 1px;
     vertical-align: top;
 }
 
-/* background styling goes under here */
+
 
 .game-page {
     background-color: #727e76;
@@ -48,8 +42,8 @@ body {
 .game-page .farm {
     position: absolute;
     left: -200px;
-    top: 50px;
-    height: 120px;
+    top: 10px;
+    height: 150px;
     width: 200px;
     background-image: url('/images/farm.png');
     background-position: center;
@@ -57,34 +51,11 @@ body {
     background-size: cover;
 }
 
-/*
-.game-page h1 {
-    display: block;
-    width: 768px;
-    margin:0 auto ;
-    text-align: center;
-    margin-bottom: 10px;
-    font-family: "PirulenRg-Regular";
-}
-
-.game-page p {
-    border: 1px solid darkslategray;
-    background-color: rgba(173, 216, 230, 0.527);
-    border-radius: 10px;
-    width: 740px ;
-    height: 35px;
-    line-height: 37px;
-    margin: 4px auto 0 auto ;
-    padding-left: 12px;
-    font-family: "Dungeon";
-    font-size: 20px;
-}
-*/
 
 /* The gameboard! */
 .gameboard {
     width: 768px;
-    height: 480px;
+    height: 500px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -98,11 +69,11 @@ body {
 
 #player {
     position: absolute;
-    width: 22px;
-    height: 30px;
-    background-image: url('/images/farmer.png');
+    width: 44px;
+    height: 60px;
+    background-image: url('/images/farmer_resize.png');
     background-position: center;
     background-size: cover;
-    top: 22px;
-    left: 22px;
+    top: 44px;
+    left: 44px;
 }
