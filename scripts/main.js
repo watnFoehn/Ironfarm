@@ -24,8 +24,8 @@ var player = {
     x: 1,
 }
 
-const YMAX = 20;
-const XMAX = 32;
+const YMAX = 10;
+const XMAX = 15;
 
 var mazeGame = new Game ("")
 
@@ -57,16 +57,16 @@ Game.prototype.makeMap = function () {
             //For visuals AND gameplay-functionality (see jQuery section below)
             if( this.maze[i][j] == "0" ) {
                 $( "#" + i + "-" + j ).addClass( "grass" );
-
+            }
                 //Adds visual borders only between "wall" and "game-area" divs
                 if(this.maze[i][j] == "1") {
-                    $( "#" + i + "-" + j ).addClass( "acre" )
+                    $( "#" + i + "-" + j ).addClass( "acre" );
                 }
                 //Adding the wall class.
             if( this.maze[i][j] == "*" ) {
                 $( "#" + i + "-" + j ).addClass("wall");
             }
-            }
+            
             
         }
     }
@@ -89,6 +89,7 @@ Game.prototype.makeMap = function () {
 var gameworld = new Game([
     ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"],
     ["*", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "*"],
+    ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
@@ -132,11 +133,19 @@ $(window).on("keydown", function(evt) {
         movePlayer('down')
         console.log('down was called')
         break;
+
+        case 17:
+        movePlayer('action')
+        console.log('action was called')
+        break;
+        
         default:
         console.log("invalid input");
+
+
     }
-    $('#player').css({top: player.y *  22 + 'px'});
-    $('#player').css({left: player.x *  22 + 'px'});
+    $('#player').css({top: player.y *  42 + 'px'});
+    $('#player').css({left: player.x *  42 + 'px'});
 });
 
 
@@ -145,37 +154,37 @@ $(window).on("keydown", function(evt) {
     switch (direction) {
       // LEFT LEFT LEFT LEFT
       case "left":
-        if (player.x < 1) {
+        /*if (player.x < 1) {
           console.log("out of bounds");
           break;
-        }
+        }*/
         player.x -= 1;
         console.log("X: " + player.x + "  Y: " + player.y);
         break;
       // UP UP UP UP
       case "up":
-        if (player.y < 1) {
+        /*if (player.y < 1) {
           console.log("out of bounds");
           break;
-        }
+        }*/
         player.y -= 1;
         console.log("X: " + player.x + "  Y: " + player.y);
         break;
       // RIGHT RIGHT RIGHT RIGHT
       case 'right':
-        if (player.x < 1) {
+        /*if (player.x < 1) {
             console.log("out of bounds");
           break;
-        }
+        }*/
         player.x += 1;
         console.log("X: " + player.x + "  Y: " + player.y);
         break;
       //DOWN DOWN DOWN DOWN
       case 'down':
-      if (player.y < 1) {
+      /*if (player.y < 1) {
           console.log('out of bounds')
           break;
-      }
+      }*/
       player.y += 1;
       console.log("X: " + player.x + "  Y: " + player.y);
         break;
