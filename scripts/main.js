@@ -77,11 +77,10 @@ Game.prototype.makeMap = function () {
 * = wall/non-walkable
 0 = grass
 1 = acre/soil
-2 = digged soil
-3 = planted seeds
-4 = crop to harvest
-5 = Ironbar hidden
-6 = Ironbar found
+2 = planted seeds
+3 = crop to harvest
+4 = Ironbar hidden
+5 = Ironbar found
 
 */
 
@@ -133,12 +132,12 @@ $(window).on("keydown", function(evt) {
         movePlayer('down')
         console.log('down was called')
         break;
-
+/*
         case 17:
         movePlayer('action')
         console.log('action was called')
         break;
-        
+*/
         default:
         console.log("invalid input");
 
@@ -188,6 +187,12 @@ $(window).on("keydown", function(evt) {
       player.y += 1;
       console.log("X: " + player.x + "  Y: " + player.y);
         break;
+        //ACTION ACTION ACTION ACTION
+        /*
+checks if the player is on a 1,2,3 or 4
+if he then performs the action --> change class of the tile according to css
+1 will become 2, 2 will become 3 and so forth
+        */
     }
   }
 
