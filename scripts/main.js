@@ -24,6 +24,11 @@ var player = {
     x: 1,
 }
 
+var counter = {
+    avocados: 0,
+    ironbars: 0,
+}
+
 const YMAX = 10;
 const XMAX = 15;
 
@@ -50,7 +55,7 @@ Game.prototype.makeMap = function () {
         for(var j=0; j<16; j++) {
             var cellDiv = $( "<div id='" + i + "-" + j + "' class='cell'></div>" );
             $(".gameboard").append(cellDiv);
-            console.log(cellDiv)
+            
 
 
             //Adding CSS-classes to the different array-elements. 
@@ -66,10 +71,14 @@ Game.prototype.makeMap = function () {
             if( this.maze[i][j] == "*" ) {
                 $( "#" + i + "-" + j ).addClass("wall");
             }
+            if( this.maze[i][j] == "4" ) {
+                $( "#" + i + "-" + j ).addClass("ironBarHidden");
+            }
             
             
         }
     }
+    console.log(this.maze);
 }
 
 /* Explanation for map
@@ -89,10 +98,10 @@ var gameworld = new Game([
     ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"],
     ["*", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
+    ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "4", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
-    ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
-    ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
-    ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
+    ["*", "0", "0", "0", "0", "1", "1", "4", "1", "1", "1", "1", "1", "0", "*"],
+    ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "4", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "*"],
@@ -106,8 +115,7 @@ var gameworld = new Game([
 
 
 
-var playerPiece = '<div id="player"></div>';
-$('.gameboard').append(playerPiece);
+
 
 
 $(window).on("keydown", function(evt) {
@@ -115,29 +123,33 @@ $(window).on("keydown", function(evt) {
       case 37:
         console.log("left was called")
         movePlayer("left");
-        
+        evt.preventDefault()
         break;
   
       case 38:
         movePlayer("up");
+        evt.preventDefault()
         console.log("up was called")
         break;
         
         case 39:
         movePlayer('right');
+        evt.preventDefault()
         console.log('right was called')
         break;
         
         case 40:
         movePlayer('down')
+        evt.preventDefault()
         console.log('down was called')
         break;
-/*
+
         case 17:
         movePlayer('action')
+        evt.preventDefault()
         console.log('action was called')
         break;
-*/
+
         default:
         console.log("invalid input");
 
@@ -147,54 +159,104 @@ $(window).on("keydown", function(evt) {
     $('#player').css({left: player.x *  42 + 'px'});
 });
 
-
+var playerPiece = '<div id="player"></div>';
+$('.gameboard').append(playerPiece);
 
   function movePlayer(direction) {
     switch (direction) {
-      // LEFT LEFT LEFT LEFT
+      // LEFT
       case "left":
-        /*if (player.x < 1) {
-          console.log("out of bounds");
-          break;
-        }*/
+      let obstacle = gameworld.maze[player.y][player.x - 1];
+      if (obstacle == "*") {
+        console.log("You are walking into a tree");
+        break;
+      }
         player.x -= 1;
         console.log("X: " + player.x + "  Y: " + player.y);
         break;
-      // UP UP UP UP
+      // UP
       case "up":
-        /*if (player.y < 1) {
-          console.log("out of bounds");
-          break;
-        }*/
+      this.obstacle = gameworld.maze[player.y - 1][player.x];
+      if (this.obstacle == "*") {
+        console.log("You are walking into a tree");
+        break;
+      }
         player.y -= 1;
         console.log("X: " + player.x + "  Y: " + player.y);
         break;
-      // RIGHT RIGHT RIGHT RIGHT
+      // RIGHT
       case 'right':
-        /*if (player.x < 1) {
-            console.log("out of bounds");
-          break;
-        }*/
+      this.obstacle = gameworld.maze[player.y][player.x + 1];
+      if (this.obstacle == "*") {
+        console.log("You are walking into a tree");
+        break;
+      }
         player.x += 1;
         console.log("X: " + player.x + "  Y: " + player.y);
         break;
-      //DOWN DOWN DOWN DOWN
+      //DOWN
       case 'down':
-      /*if (player.y < 1) {
-          console.log('out of bounds')
-          break;
-      }*/
+      this.obstacle = gameworld.maze[player.y + 1][player.x];
+      if (this.obstacle == "*") {
+        console.log("You are walking into a tree");
+        break;
+      }
       player.y += 1;
       console.log("X: " + player.x + "  Y: " + player.y);
         break;
-        //ACTION ACTION ACTION ACTION
-        /*
-checks if the player is on a 1,2,3 or 4
-if he then performs the action --> change class of the tile according to css
-1 will become 2, 2 will become 3 and so forth
-        */
+        //ACTION
+      case 'action':
+      let tile = gameworld.maze[player.y][player.x];
+      if (tile == "0") {
+          break;
+      }
+      if (tile == "1"){
+      $('#'+ player.y + '-' + player.x).addClass('plantedSeeds').removeClass('acre')
+      gameworld.maze[player.y][player.x] = '2'
+      break;
+      }
+      if (tile == "2"){
+      $('#'+ player.y + '-' + player.x).addClass('cropsToHarvest').removeClass('plantedSeeds')
+      gameworld.maze[player.y][player.x] = '3'
+      break;
+      }
+      if (tile == "3"){
+      $('#'+ player.y + '-' + player.x).addClass('acre').removeClass('cropsToHarvest')
+      gameworld.maze[player.y][player.x] = '1'
+      counter.avocados ++;
+      showScore()
+      break;
+      }
+      if (tile == "4"){
+      $('#'+ player.y + '-' + player.x).addClass('foundIronBar').removeClass('ironBarHidden')
+      gameworld.maze[player.y][player.x] = '5'
+      console.log(tile)
+      break;
+      }
+      if (tile == "5"){
+      $('#'+ player.y + '-' + player.x).addClass('acre').removeClass('foundIronBar')
+      gameworld.maze[player.y][player.x] = '1'
+      console.log(tile)
+      counter.ironbars ++;
+      showScore()
+      break;
+      }
+    
+    
     }
-  }
+    
+        
+    }    
+   
+    
+    
+  function showScore(){
+        $('.avocadoScore').html('Avocados: ' + this.counter.avocados)
+        $('.ironScore').html('Iron: ' + this.counter.ironbars)
+    }
+
+    
+
 
   
   
