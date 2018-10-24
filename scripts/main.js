@@ -5,11 +5,11 @@ function DisableScrollbars()
     document.body.scroll = "no";
 }
 
-/* ----------------------------------------------------------------------------------------
-|
-|    The constructor-class for the maze 
-|
-\-----------------------------------------------------------------------------------------*/
+$('.introButton').click(function(){
+     $('.intro').hide();
+})
+
+// Constructor for Grid + all the variables that stores basic game information
 function Game(maze) {
     this.maze = maze
     this.player = {
@@ -39,12 +39,7 @@ var mazeGame = new Game ("")
 
 
 
-/* ----------------------------------------------------------------------------------------
-|
-|    Generating the current map-instance to the DOM.
-|    also includes jQuery functionalities (gameplay & visuals)
-|
-\----------------------------------------------------------------------------------------*/
+//Generating the grid
 
 Game.prototype.makeMap = function () {
 
@@ -59,15 +54,15 @@ Game.prototype.makeMap = function () {
 
 
             //Adding CSS-classes to the different array-elements. 
-            //For visuals AND gameplay-functionality (see jQuery section below)
+            
             if( this.maze[i][j] == "0" ) {
                 $( "#" + i + "-" + j ).addClass( "grass" );
             }
-                //Adds visual borders only between "wall" and "game-area" divs
+                
                 if(this.maze[i][j] == "1") {
                     $( "#" + i + "-" + j ).addClass( "acre" );
                 }
-                //Adding the wall class.
+                
             if( this.maze[i][j] == "*" ) {
                 $( "#" + i + "-" + j ).addClass("wall");
             }
@@ -78,7 +73,7 @@ Game.prototype.makeMap = function () {
             
         }
     }
-    console.log(this.maze);
+    
 }
 
 /* Explanation for map
@@ -258,11 +253,17 @@ $('.gameboard').append(playerPiece);
 
     function checkWin(){
         if(this.counter.ironbars == 5){
-            alert('you won')
+            console.log('YOU WON!')
+            $('.winMessage').css('display', 'block')
+            $('.gameboard').hide()
         }
     }
     
-
-
+    
+$('#web').click((function() {
+    window.open('https://www.ironhack.com/en');
+      }));
   
-  
+$('#farm').click((function() {
+    window.open('https://stardewvalley.net/');
+          }));

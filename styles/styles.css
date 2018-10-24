@@ -32,7 +32,7 @@ body {
     background-color: #727e76;
     height: 500px;
     width: 1200px;
-    margin: 0;
+    margin: 0 auto;
     border-radius: 10px;
     display: block;
     padding: unset;
@@ -154,3 +154,28 @@ body {
     top: 60px;
     
 }
+
+.winMessage{
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    display: none;
+    
+}
+
+
+
+button{
+    font-family: PressStart2P;
+    background-color: #8896AB;
+    margin: 10px;
+}
+
+.intro{
+    width: 500px;
+    height: 1000px;
+    margin: 0 auto;
+    display: block;
+    padding: unset;
+}
+
