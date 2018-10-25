@@ -1,4 +1,4 @@
-
+$('.game-page').hide()
 function DisableScrollbars()
 {
     document.documentElement.style.overflow = 'hidden';
@@ -7,6 +7,7 @@ function DisableScrollbars()
 
 $('.introButton').click(function(){
      $('.intro').hide();
+     $('.game-page').show()
 })
 
 const SOUNDTRACK = new Audio('/sounds/soundtrack.mp3');
