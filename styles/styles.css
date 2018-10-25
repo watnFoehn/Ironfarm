@@ -128,15 +128,7 @@ body {
     background-size: cover;
 }
 
-.gameboard .instructions{
-    border: 1px solid black;
-    position: absolute;
-    left: -220px;
-    top: 300px;
-    height: 150px;
-    width: 200px;
-    display: none;
-}
+
 
 .gameboard .avocadoScore{
     
@@ -155,6 +147,14 @@ body {
     
 }
 
+.gameboard .showIrons{
+    position: absolute;
+    left: 770px;
+    top: 120px;
+}
+
+
+
 .winMessage{
     margin: 0 auto;
     width: 500px;
@@ -169,6 +169,7 @@ button{
     font-family: PressStart2P;
     background-color: #8896AB;
     margin: 10px;
+    
 }
 
 .intro{
@@ -177,5 +178,24 @@ button{
     margin: 0 auto;
     display: block;
     padding: unset;
+    
+    
+    
+}
+
+.intro #introButton{
+   position: relative;
+   left: 160px;
+    
+}
+
+#web{
+    position: relative;
+    left: 70px;
+}
+
+#farm{
+    position: relative;
+    left: 110px;
 }
 

@@ -1,11 +1,11 @@
 $('.game-page').hide()
-function DisableScrollbars()
-{
-    document.documentElement.style.overflow = 'hidden';
-    document.body.scroll = "no";
-}
+$('#html_bar').hide()
+$('#css_bar').hide()
+$('#jquery_bar').hide()
+$('#js_bar').hide()
+$('#git_bar').hide()
 
-$('.introButton').click(function(){
+$('#introButton').click(function(){
      $('.intro').hide();
      $('.game-page').show()
 })
@@ -263,6 +263,9 @@ $('.gameboard').append(playerPiece);
   function showScore(){
         $('.avocadoScore').html('Avocados: ' + this.counter.avocados)
         $('.ironScore').html('Iron: ' + this.counter.ironbars)
+        if(this.counter.ironbars == 1){
+            $('#html_bar').show();
+        }
     }
 
     function checkWin(){
