@@ -4,7 +4,7 @@ body {
 }
 
 
-@font-face { font-family: PressStart2P; src: url('/PressStart2P.ttf'); } 
+@font-face { font-family: PressStart2P; src: url('./PressStart2P.ttf'); } 
 
 
 
@@ -46,7 +46,7 @@ body {
     top: 10px;
     height: 150px;
     width: 200px;
-    background-image: url("/images/farm.png");
+    background-image: url("./images/farm.png");
     background-position: center;
   
     background-size: cover;
@@ -71,7 +71,7 @@ body {
     position: absolute;
     width: 44px;
     height: 44px;
-    background-image: url('/images/farmer_square.png');
+    background-image: url('./images/farmer_square.png');
     background-position: center;
     background-size: cover;
     top: 42px;
@@ -80,50 +80,50 @@ body {
 }
 
 .cell.grass {
-    background-image: url('/images/grass.png');
+    background-image: url('./images/grass.png');
     background-position: center;
     background-size: cover;
 }
 
 .cell.acre {
-    background-image: url('/images/ground05.png');
+    background-image: url('./images/ground05.png');
     background-position: center;
     background-size: cover;
 }
 
 .cell.wall {
-    background-image: url('/images/ForestTileSet.png');
+    background-image: url('./images/ForestTileSet.png');
     background-position: center;
     background-size: cover;
 }
 
 
 .cell.foundIronBar {
-    background-image: url('/images/found_iron.png');
+    background-image: url('./images/found_iron.png');
     background-position: center;
     background-size: cover;
 }
 
 .cell.ironBarHidden {
-    background-image: url('/images/ground05.png');
+    background-image: url('./images/ground05.png');
     background-position: center;
     background-size: cover;
 }
 
 .cell.plantedSeeds {
-    background-image: url('/images/seeds_planted.png');
+    background-image: url('./images/seeds_planted.png');
     background-position: center;
     background-size: cover;
 }
 
 .cell.cropsToHarvest {
-    background-image: url('/images/groundAvocado.png');
+    background-image: url('./images/groundAvocado.png');
     background-position: center;
     background-size: cover;
 }
 
 .cell {
-    background-image: url('/images/water.png');
+    background-image: url('./images/water.png');
     background-position: center;
     background-size: cover;
 }
