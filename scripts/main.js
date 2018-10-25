@@ -38,46 +38,32 @@ const XMAX = 15;
 
 var mazeGame = new Game ("")
 
-
-
-
-
-
 //Generating the grid
 
 Game.prototype.makeMap = function () {
-
-     
-
-    //creates empty div for each array-element, then adds it to the gameboard-div "gameboard"
+   
+   //creates empty div for each array-element, then adds it to the gameboard-div "gameboard"
     for (var i=0; i<11; i++) { 
         for(var j=0; j<16; j++) {
             var cellDiv = $( "<div id='" + i + "-" + j + "' class='cell'></div>" );
             $(".gameboard").append(cellDiv);
             
-
-
             //Adding CSS-classes to the different array-elements. 
             
             if( this.maze[i][j] == "0" ) {
                 $( "#" + i + "-" + j ).addClass( "grass" );
             }
-                
-                if(this.maze[i][j] == "1") {
-                    $( "#" + i + "-" + j ).addClass( "acre" );
+            if(this.maze[i][j] == "1") {
+                $( "#" + i + "-" + j ).addClass( "acre" );
                 }
-                
             if( this.maze[i][j] == "*" ) {
                 $( "#" + i + "-" + j ).addClass("wall");
             }
             if( this.maze[i][j] == "4" ) {
                 $( "#" + i + "-" + j ).addClass("ironBarHidden");
-            }
-            
-            
+            }          
         }
     }
-    
 }
 
 /* Explanation for map
@@ -92,7 +78,6 @@ Game.prototype.makeMap = function () {
 
 */
 
-
 var gameworld = new Game([
     ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"],
     ["*", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "*"],
@@ -105,17 +90,9 @@ var gameworld = new Game([
     ["*", "0", "0", "0", "0", "1", "1", "1", "1", "1", "1", "1", "1", "0", "*"],
     ["*", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "*"],
     ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*", "*"]
-    
     ]);
 
     gameworld.makeMap()
-
-
-
-
-
-
-
 
 $(window).on("keydown", function(evt) {
     let walkSound = new Audio('/sounds/step.wav');
@@ -155,12 +132,9 @@ $(window).on("keydown", function(evt) {
         console.log('action was called')
         digSound.play()
         break;
-
         default:
         console.log("invalid input");
-
-
-    }
+       }
     $('#player').css({top: player.y *  42 + 'px'});
     $('#player').css({left: player.x *  42 + 'px'});
 });
@@ -211,7 +185,7 @@ $('.gameboard').append(playerPiece);
       player.y += 1;
       console.log("X: " + player.x + "  Y: " + player.y);
         break;
-        //ACTION
+      //ACTION
       case 'action':
       let tile = gameworld.maze[player.y][player.x];
       if (tile == "0") {
@@ -251,18 +225,12 @@ $('.gameboard').append(playerPiece);
       checkWin();
       break;
       }
-    
-    
-    }
-    
-        
-    }    
-   
-    
+    } 
+  }    
     
   function showScore(){
         $('.avocadoScore').html('Avocados: ' + this.counter.avocados)
-        //$('.ironScore').html('Iron: ' + this.counter.ironbars)
+        //$('.ironScore').html('Iron: ' + this.counter.ironbars)  //this would tick up numbers for the iron counter. But I replaced it with the pictures of the actual Iron Bars.
         if(this.counter.ironbars == 1){
             $('#html_bar').show();
         }
@@ -291,8 +259,6 @@ $('.gameboard').append(playerPiece);
         }
     }
     
-    
-
 $('#web').click((function() {
     window.open('https://www.ironhack.com/en');
       }));
