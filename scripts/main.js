@@ -10,7 +10,7 @@ $('#introButton').click(function(){
      $('.game-page').show()
 })
 
-const SOUNDTRACK = new Audio('../sounds/soundtrack.mp3');
+const SOUNDTRACK = new Audio('./sounds/soundtrack.mp3');
 window.onload = function() {
     SOUNDTRACK.play();
   };
