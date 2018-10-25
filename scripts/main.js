@@ -9,6 +9,9 @@ $('.introButton').click(function(){
      $('.intro').hide();
 })
 
+const SOUNDTRACK = new Audio('/sounds/soundtrack.mp3');
+SOUNDTRACK.play();
+
 // Constructor for Grid + all the variables that stores basic game information
 function Game(maze) {
     this.maze = maze
@@ -114,35 +117,42 @@ var gameworld = new Game([
 
 
 $(window).on("keydown", function(evt) {
+    let walkSound = new Audio('/sounds/step.wav');
+    let digSound = new Audio('sounds/dig.wav')
     switch (evt.which) {
       case 37:
         console.log("left was called")
         movePlayer("left");
         evt.preventDefault()
+        walkSound.play();
         break;
   
       case 38:
         movePlayer("up");
         evt.preventDefault()
         console.log("up was called")
+        walkSound.play();
         break;
         
         case 39:
         movePlayer('right');
         evt.preventDefault()
         console.log('right was called')
+        walkSound.play();
         break;
         
         case 40:
         movePlayer('down')
         evt.preventDefault()
         console.log('down was called')
+        walkSound.play();
         break;
 
         case 17:
         movePlayer('action')
         evt.preventDefault()
         console.log('action was called')
+        digSound.play()
         break;
 
         default:
@@ -158,6 +168,7 @@ var playerPiece = '<div id="player"></div>';
 $('.gameboard').append(playerPiece);
 
   function movePlayer(direction) {
+    let scoreSound =  new Audio('sounds/score.wav')
     switch (direction) {
       // LEFT
       case "left":
@@ -219,6 +230,7 @@ $('.gameboard').append(playerPiece);
       $('#'+ player.y + '-' + player.x).addClass('acre').removeClass('cropsToHarvest')
       gameworld.maze[player.y][player.x] = '1'
       counter.avocados ++;
+      scoreSound.play()
       showScore()
       break;
       }
@@ -233,6 +245,7 @@ $('.gameboard').append(playerPiece);
       gameworld.maze[player.y][player.x] = '1'
       console.log(tile)
       counter.ironbars ++;
+      scoreSound.play()
       showScore()
       checkWin();
       break;
@@ -252,8 +265,10 @@ $('.gameboard').append(playerPiece);
     }
 
     function checkWin(){
+        let winSound = new Audio('/sounds/end_game.wav')
         if(this.counter.ironbars == 5){
             console.log('YOU WON!')
+            winSound.play()
             $('.winMessage').css('display', 'block')
             $('.gameboard').hide()
         }
