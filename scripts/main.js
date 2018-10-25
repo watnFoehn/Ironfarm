@@ -11,7 +11,9 @@ $('#introButton').click(function(){
 })
 
 const SOUNDTRACK = new Audio('../sounds/soundtrack.mp3');
-SOUNDTRACK.play();
+window.onload = function() {
+    SOUNDTRACK.play();
+  };
 
 // Constructor for Grid + all the variables that stores basic game information
 function Game(maze) {
