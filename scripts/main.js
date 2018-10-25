@@ -262,9 +262,21 @@ $('.gameboard').append(playerPiece);
     
   function showScore(){
         $('.avocadoScore').html('Avocados: ' + this.counter.avocados)
-        $('.ironScore').html('Iron: ' + this.counter.ironbars)
+        //$('.ironScore').html('Iron: ' + this.counter.ironbars)
         if(this.counter.ironbars == 1){
             $('#html_bar').show();
+        }
+        if(this.counter.ironbars == 2){
+            $('#css_bar').show();
+        }
+        if(this.counter.ironbars == 3){
+            $('#js_bar').show();
+        }
+        if(this.counter.ironbars == 4){
+            $('#jquery_bar').show();
+        }
+        if(this.counter.ironbars == 5){
+            $('#git_bar').show();
         }
     }
 
@@ -272,13 +284,15 @@ $('.gameboard').append(playerPiece);
         let winSound = new Audio('/sounds/end_game.wav')
         if(this.counter.ironbars == 5){
             console.log('YOU WON!')
+            SOUNDTRACK.pause()
             winSound.play()
-            $('.winMessage').css('display', 'block')
-            $('.gameboard').hide()
+            setTimeout(function(){$('.winMessage').css('display', 'block')}, 2000);
+            setTimeout(function(){$('.gameboard').hide()}, 2000);
         }
     }
     
     
+
 $('#web').click((function() {
     window.open('https://www.ironhack.com/en');
       }));
