@@ -10,7 +10,7 @@ $('#introButton').click(function(){
      $('.game-page').show()
 })
 
-const SOUNDTRACK = new Audio('../sounds/soundtrack.mp3');
+const SOUNDTRACK = new Audio('./sounds/soundtrack.mp3');
 SOUNDTRACK.play();
 
 // Constructor for Grid + all the variables that stores basic game information
