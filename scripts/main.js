@@ -10,7 +10,7 @@ $('#introButton').click(function(){
      $('.game-page').show()
 })
 
-const SOUNDTRACK = new Audio('/sounds/soundtrack.mp3');
+const SOUNDTRACK = new Audio('../sounds/soundtrack.mp3');
 SOUNDTRACK.play();
 
 // Constructor for Grid + all the variables that stores basic game information
@@ -95,8 +95,8 @@ var gameworld = new Game([
     gameworld.makeMap()
 
 $(window).on("keydown", function(evt) {
-    let walkSound = new Audio('/sounds/step.wav');
-    let digSound = new Audio('sounds/dig.wav')
+    let walkSound = new Audio('../sounds/step.wav');
+    let digSound = new Audio('../sounds/dig.wav')
     switch (evt.which) {
       case 37:
         console.log("left was called")
@@ -143,7 +143,7 @@ var playerPiece = '<div id="player"></div>';
 $('.gameboard').append(playerPiece);
 
   function movePlayer(direction) {
-    let scoreSound =  new Audio('sounds/score.wav')
+    let scoreSound =  new Audio('../sounds/score.wav')
     switch (direction) {
       // LEFT
       case "left":
@@ -249,7 +249,7 @@ $('.gameboard').append(playerPiece);
     }
 
     function checkWin(){
-        let winSound = new Audio('/sounds/end_game.wav')
+        let winSound = new Audio('../sounds/end_game.wav')
         if(this.counter.ironbars == 5){
             console.log('YOU WON!')
             SOUNDTRACK.pause()
