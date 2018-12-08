@@ -6,23 +6,22 @@ $('#js_bar').hide()
 $('#git_bar').hide()
 
 $('#introButton').click(function(){
-     $('.intro').hide();
-     $('.game-page').show()
+  $('.intro').hide();
+  $('.game-page').show()
 })
 
 const SOUNDTRACK = new Audio('./sounds/soundtrack.mp3');
 window.onload = function() {
-    SOUNDTRACK.play();
+  SOUNDTRACK.play();
   };
 
 // Constructor for Grid + all the variables that stores basic game information
 function Game(maze) {
-    this.maze = maze
-    this.player = {
-        y: 1,
-        x: 1,
-        
-    };
+  this.maze = maze
+  this.player = {
+    y: 1,
+    x: 1,     
+  };
 }
 
 var player = {
